@@ -1,0 +1,32 @@
+{
+  "name": "fiberx",
+  "version": "0.1.0",
+  "private": true,
+  "description": "FiberX — Fiber Wallet Connect SDK. Drop-in wallet connection, invoices, readiness checks, and payment status UI for Fiber Network apps.",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@10.28.2",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "pnpm build:libs && concurrently -n proxy,demo -c blue,magenta \"pnpm dev:proxy\" \"pnpm dev:demo\"",
+    "dev:demo": "pnpm --filter @fiberx/demo dev",
+    "dev:proxy": "pnpm --filter @fiberx/proxy dev",
+    "build:libs": "pnpm --filter @fiberx/core build && pnpm --filter @fiberx/react build",
+    "build": "pnpm build:libs && pnpm --filter @fiberx/proxy build && pnpm --filter @fiberx/demo build",
+    "test": "pnpm build:libs && pnpm --filter @fiberx/core --filter @fiberx/react --filter @fiberx/proxy test",
+    "test:e2e": "pnpm --filter @fiberx/demo test:e2e",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md,css}\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  }
+}

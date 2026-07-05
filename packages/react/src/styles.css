@@ -1,0 +1,379 @@
+/* FiberX React component styles. Namespaced under .fx- to avoid collisions. */
+
+.fx-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+  font-family: inherit;
+  line-height: 1;
+}
+.fx-btn:active {
+  transform: translateY(1px);
+}
+.fx-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.fx-btn-primary {
+  background: #6d3bf5;
+  color: #fff;
+}
+.fx-btn-primary:hover:not(:disabled) {
+  background: #5a2fd6;
+}
+.fx-btn-success {
+  background: #0f9d58;
+  color: #fff;
+}
+.fx-btn-ghost {
+  background: transparent;
+  border-color: #d0d0e0;
+  color: #333;
+}
+.fx-btn-small {
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+  background: #eee;
+  color: #333;
+}
+.fx-btn-block {
+  width: 100%;
+  justify-content: center;
+}
+
+.fx-icon-btn {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #888;
+  line-height: 1;
+}
+
+.fx-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.fx-dot-green {
+  background: #0f9d58;
+}
+.fx-dot-yellow {
+  background: #f4b400;
+}
+.fx-dot-red {
+  background: #db4437;
+}
+.fx-dot-white {
+  background: #fff;
+}
+
+/* Modal */
+.fx-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 16, 40, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+.fx-modal {
+  background: #fff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+.fx-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border-bottom: 1px solid #eee;
+}
+.fx-modal-title {
+  margin: 0;
+  font-size: 18px;
+}
+.fx-modal-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fx-provider-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fx-provider-option {
+  text-align: left;
+  border: 1.5px solid #e3e3ef;
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: #fafaff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.fx-provider-option-active {
+  border-color: #6d3bf5;
+  background: #f3efff;
+}
+.fx-provider-label {
+  font-weight: 600;
+  font-size: 14px;
+}
+.fx-provider-hint {
+  font-size: 12px;
+  color: #777;
+}
+
+.fx-permissions {
+  background: #f7f7fb;
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.fx-permissions-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 6px;
+}
+.fx-permissions-list {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  color: #444;
+}
+.fx-permissions-list li {
+  margin: 2px 0;
+}
+
+.fx-muted {
+  color: #777;
+  font-size: 13px;
+}
+.fx-error {
+  background: #fdecea;
+  color: #b3261e;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+.fx-connected-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+/* Badges */
+.fx-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.fx-badge-green {
+  background: #e6f4ea;
+  color: #0f9d58;
+}
+.fx-badge-yellow {
+  background: #fef7e0;
+  color: #a56e00;
+}
+.fx-badge-red {
+  background: #fdecea;
+  color: #c5221f;
+}
+.fx-badge-neutral {
+  background: #eef0f6;
+  color: #444;
+}
+.fx-badge-block {
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 10px;
+  gap: 4px;
+}
+.fx-badge-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.fx-badge-action {
+  font-weight: 400;
+  color: #8a2a26;
+}
+
+/* Invoice card */
+.fx-invoice-card {
+  border: 1px solid #ececf4;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+}
+.fx-invoice-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.fx-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #999;
+  font-weight: 600;
+}
+.fx-value {
+  font-size: 14px;
+}
+.fx-invoice-address {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.fx-invoice-address code {
+  background: #f4f4fb;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  word-break: break-all;
+  flex: 1;
+}
+.fx-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  max-width: 100%;
+}
+
+/* Table */
+.fx-table-wrap {
+  overflow-x: auto;
+}
+.fx-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.fx-table th,
+.fx-table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid #eee;
+  white-space: nowrap;
+}
+.fx-table th {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #999;
+  letter-spacing: 0.03em;
+}
+.fx-num {
+  text-align: right;
+}
+
+/* Payment modal */
+.fx-pay-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.fx-pay-succeeded .fx-pay-status-text {
+  color: #0f9d58;
+}
+.fx-pay-failed .fx-pay-status-text {
+  color: #c5221f;
+}
+.fx-pay-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.fx-pay-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #999;
+}
+.fx-pay-step-marker {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid #ddd;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+.fx-pay-step-active {
+  color: #6d3bf5;
+}
+.fx-pay-step-active .fx-pay-step-marker {
+  border-color: #6d3bf5;
+}
+.fx-pay-step-done {
+  color: #0f9d58;
+}
+.fx-pay-step-done .fx-pay-step-marker {
+  border-color: #0f9d58;
+  background: #0f9d58;
+  color: #fff;
+}
+.fx-pay-receipt {
+  background: #f7f7fb;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+}
+.fx-pay-receipt .fx-label {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.fx-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid #ddd;
+  border-top-color: #6d3bf5;
+  border-radius: 50%;
+  animation: fx-spin 0.8s linear infinite;
+}
+@keyframes fx-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

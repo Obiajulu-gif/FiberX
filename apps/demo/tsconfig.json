@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "types": ["node"],
+    "noEmit": true,
+    "lib": ["ES2021", "DOM", "DOM.Iterable"],
+    "moduleResolution": "Bundler"
+  },
+  "include": ["src", "tests", "vite.config.ts", "playwright.config.ts"]
+}
