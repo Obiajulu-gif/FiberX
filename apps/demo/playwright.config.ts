@@ -11,7 +11,12 @@ export default defineConfig({
     trace: "on-first-retry",
   },
   projects: [
-    { name: "chromium", use: { ...devices["Desktop Chrome"] } },
+    {
+      name: "chromium",
+      // Use the full Chromium build (headless "new") instead of the separate
+      // chrome-headless-shell download.
+      use: { ...devices["Desktop Chrome"], channel: "chromium" },
+    },
   ],
   webServer: {
     command: "pnpm dev",
