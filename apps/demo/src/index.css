@@ -81,8 +81,127 @@ body {
   }
 }
 
+/* Native select dropdowns can otherwise render as bright white on some browsers. */
+select.fx-input {
+  color-scheme: dark;
+  background-color: rgba(5, 3, 14, 0.78);
+}
+select.fx-input option {
+  background: #110d23;
+  color: #f4f1ff;
+}
+
 /* Bridge: make the shipped @fiberx/react components feel native on the
    dark demo surface without touching the reusable library styles. */
+.fx-modal-overlay {
+  background:
+    radial-gradient(800px 420px at 50% 12%, rgba(124, 77, 255, 0.26), transparent 70%),
+    rgba(3, 2, 10, 0.78) !important;
+  backdrop-filter: blur(14px);
+}
+
+.fx-modal {
+  background: linear-gradient(180deg, rgba(23, 17, 43, 0.98), rgba(10, 7, 21, 0.98)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #f4f1ff !important;
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.72),
+    0 0 0 1px rgba(157, 123, 255, 0.12) !important;
+}
+.fx-modal-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+.fx-modal-title {
+  color: #ffffff !important;
+}
+.fx-icon-btn {
+  color: rgba(255, 255, 255, 0.68) !important;
+}
+.fx-icon-btn:hover {
+  color: #ffffff !important;
+}
+.fx-modal-body {
+  color: #e9e7f5 !important;
+}
+
+.fx-btn-primary {
+  background: linear-gradient(135deg, #8f66ff, #6d3bf5) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 14px 34px rgba(124, 77, 255, 0.36) !important;
+}
+.fx-btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #a07dff, #7648ff) !important;
+}
+.fx-btn-success {
+  background: linear-gradient(135deg, #28c983, #0f9d58) !important;
+  color: #04120b !important;
+  border-color: rgba(52, 211, 153, 0.32) !important;
+  box-shadow: 0 14px 34px rgba(52, 211, 153, 0.22) !important;
+}
+.fx-btn-ghost {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+.fx-btn-ghost:hover:not(:disabled),
+.fx-btn-small:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+}
+.fx-btn-small {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #e9e7f5 !important;
+}
+
+.fx-provider-option {
+  background: rgba(255, 255, 255, 0.055) !important;
+  border-color: rgba(255, 255, 255, 0.13) !important;
+  color: #f4f1ff !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+.fx-provider-option:hover {
+  background: rgba(255, 255, 255, 0.085) !important;
+  border-color: rgba(157, 123, 255, 0.38) !important;
+}
+.fx-provider-option-active {
+  background: linear-gradient(135deg, rgba(124, 77, 255, 0.24), rgba(34, 211, 238, 0.08)) !important;
+  border-color: rgba(157, 123, 255, 0.82) !important;
+  box-shadow:
+    0 0 0 1px rgba(157, 123, 255, 0.22),
+    0 14px 34px rgba(124, 77, 255, 0.16) !important;
+}
+.fx-provider-label {
+  color: #ffffff !important;
+}
+.fx-provider-hint,
+.fx-muted {
+  color: rgba(255, 255, 255, 0.64) !important;
+}
+
+.fx-permissions,
+.fx-pay-receipt {
+  background: rgba(0, 0, 0, 0.26) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #e9e7f5 !important;
+}
+.fx-permissions-title {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+.fx-permissions-list {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+.fx-connected-note {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+.fx-error {
+  background: rgba(251, 113, 133, 0.14) !important;
+  border: 1px solid rgba(251, 113, 133, 0.28) !important;
+  color: #fecdd3 !important;
+}
+
 .fx-invoice-card {
   background: rgba(255, 255, 255, 0.03) !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
@@ -90,10 +209,13 @@ body {
 }
 .fx-invoice-card .fx-value,
 .fx-table,
-.fx-table td {
+.fx-table td,
+.fx-pay-receipt span,
+.fx-pay-receipt code {
   color: #e9e7f5;
 }
-.fx-invoice-address code {
+.fx-invoice-address code,
+.fx-pay-receipt code {
   background: rgba(0, 0, 0, 0.35) !important;
   color: #d7d2f5 !important;
 }
@@ -104,10 +226,63 @@ body {
 .fx-table td {
   border-bottom-color: rgba(255, 255, 255, 0.08) !important;
 }
-.fx-btn-small {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #e9e7f5 !important;
-}
 .fx-label {
-  color: rgba(255, 255, 255, 0.4) !important;
+  color: rgba(255, 255, 255, 0.48) !important;
+}
+
+.fx-badge-green {
+  background: rgba(52, 211, 153, 0.14) !important;
+  color: #86efac !important;
+}
+.fx-badge-yellow {
+  background: rgba(251, 191, 36, 0.14) !important;
+  color: #fde68a !important;
+}
+.fx-badge-red {
+  background: rgba(251, 113, 133, 0.14) !important;
+  color: #fda4af !important;
+}
+.fx-badge-neutral {
+  background: rgba(255, 255, 255, 0.09) !important;
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+.fx-badge-action {
+  color: #fecdd3 !important;
+}
+
+.fx-pay-step {
+  color: rgba(255, 255, 255, 0.56) !important;
+}
+.fx-pay-step-marker {
+  border-color: rgba(255, 255, 255, 0.24) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+.fx-pay-step-active,
+.fx-pay-step-active .fx-pay-status-text {
+  color: #bda8ff !important;
+}
+.fx-pay-step-active .fx-pay-step-marker {
+  border-color: #9d7bff !important;
+  color: #ffffff !important;
+}
+.fx-pay-step-done {
+  color: #86efac !important;
+}
+.fx-pay-step-done .fx-pay-step-marker {
+  border-color: #34d399 !important;
+  background: #34d399 !important;
+  color: #05140d !important;
+}
+.fx-pay-status-text {
+  color: #ffffff !important;
+}
+.fx-pay-succeeded .fx-pay-status-text {
+  color: #86efac !important;
+}
+.fx-pay-failed .fx-pay-status-text {
+  color: #fda4af !important;
+}
+.fx-spinner {
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  border-top-color: #9d7bff !important;
 }
