@@ -30,11 +30,17 @@ export function InvoicePlayground() {
 
   return (
     <section className="panel">
-      <div className="flex items-center gap-2">
-        <span className="grid h-6 w-6 place-items-center rounded-md bg-fx-violet/20 text-xs">
-          🧾
-        </span>
-        <h2 className="panel-title">Invoice playground</h2>
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-2">
+          <span className="step-pill bg-fx-cyan/15 text-fx-cyan">Step 2</span>
+          <span className="grid h-6 w-6 place-items-center rounded-md bg-fx-violet/20 text-xs">
+            🧾
+          </span>
+          <h2 className="panel-title">Create a Fiber invoice</h2>
+        </div>
+        <p className="text-xs leading-5 text-white/45">
+          Generate a payment request that downstream apps can parse, show, and pay.
+        </p>
       </div>
 
       <div className="grid grid-cols-[1fr_130px] gap-3">
