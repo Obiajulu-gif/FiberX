@@ -23,8 +23,16 @@ export function ConnectPanel() {
 
   return (
     <section className="panel">
-      <div className="flex items-center justify-between">
-        <h2 className="panel-title">Connection</h2>
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <div className="mb-2 flex items-center gap-2">
+            <span className="step-pill bg-fx-violet/15 text-fx-violet-400">Step 1</span>
+            <h2 className="panel-title">Connect wallet</h2>
+          </div>
+          <p className="text-xs leading-5 text-white/45">
+            Pick a provider and let the SDK request safe wallet permissions.
+          </p>
+        </div>
         {connected ? (
           <span className="chip bg-fx-emerald/15 text-fx-emerald">Connected</span>
         ) : (
@@ -33,11 +41,14 @@ export function ConnectPanel() {
       </div>
 
       {!connected || !info ? (
-        <p className="text-sm text-white/50" data-testid="connect-hint">
-          Click <strong className="text-white/80">Connect Fiber Wallet</strong>{" "}
-          above and choose the Mock Fiber Wallet to explore the SDK without a
-          node.
-        </p>
+        <div className="rounded-2xl border border-fx-violet/20 bg-fx-violet/10 px-4 py-3" data-testid="connect-hint">
+          <div className="text-sm font-black text-white">Start here</div>
+          <p className="mt-1 text-sm leading-6 text-white/58">
+            Click <strong className="text-white/85">Connect Fiber Wallet</strong>{" "}
+            in the header and choose <strong className="text-fx-violet-400">Mock Fiber Wallet</strong>.
+            This lets judges test the full flow without running a Fiber node.
+          </p>
+        </div>
       ) : (
         <div
           className="grid grid-cols-2 gap-x-4 gap-y-3.5"
@@ -68,7 +79,7 @@ function Field({
   full?: boolean;
 }) {
   return (
-    <div className={`flex flex-col gap-1 ${full ? "col-span-2" : ""}`}>
+    <div className={`flex flex-col gap-1 rounded-xl bg-white/[0.025] px-3 py-2 ${full ? "col-span-2" : ""}`}>
       <span className="eyebrow">{label}</span>
       <span
         className={`text-sm text-white/90 ${mono ? "font-mono text-[13px] break-all" : ""}`}
