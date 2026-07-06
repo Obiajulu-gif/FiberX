@@ -20,10 +20,18 @@ export function ChannelPanel() {
 
   return (
     <section className="panel">
-      <h2 className="panel-title">Channels</h2>
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-2">
+          <span className="step-pill bg-fx-cyan/15 text-fx-cyan">Capacity</span>
+          <h2 className="panel-title">Wallet channel snapshot</h2>
+        </div>
+        <p className="text-xs leading-5 text-white/45">
+          Readiness checks use this ready outbound capacity before a payment is sent.
+        </p>
+      </div>
 
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <Stat label="Ready" value={String(ready.length)} accent="emerald" />
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+        <Stat label="Ready channels" value={String(ready.length)} accent="emerald" />
         <Stat label="Pending" value={String(pending.length)} accent="amber" />
         <Stat
           label="Outbound CKB"
