@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import { FiberConnectProvider } from "@fiberx/react";
 import "@fiberx/react/styles.css";
 import "./index.css";
@@ -15,14 +16,16 @@ const proxyApiKey = import.meta.env.VITE_PROXY_API_KEY ?? "dev-secret";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <FiberConnectProvider
-      appName="FiberX Demo"
-      network="testnet"
-      defaultProvider="mock"
-      proxyUrl={proxyUrl}
-      proxyApiKey={proxyApiKey}
-    >
-      <App />
-    </FiberConnectProvider>
+    <BrowserRouter>
+      <FiberConnectProvider
+        appName="FiberX Demo"
+        network="testnet"
+        defaultProvider="mock"
+        proxyUrl={proxyUrl}
+        proxyApiKey={proxyApiKey}
+      >
+        <App />
+      </FiberConnectProvider>
+    </BrowserRouter>
   </React.StrictMode>,
 );

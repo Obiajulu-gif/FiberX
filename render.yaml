@@ -1,0 +1,40 @@
+# Render blueprint for the FiberX proxy.
+#
+# The Vercel deployment hosts the static demo (mock mode). This blueprint hosts
+# the *backend* proxy on Render, which is where a long-running Node service
+# belongs. In mock mode it needs no Fiber node, so it works immediately; switch
+# FIBER_PROXY_MODE to "real" and set FIBER_RPC_URL to front a real node.
+#
+# Deploy: https://dashboard.render.com → New → Blueprint → pick this repo.
+
+services:
+  - type: web
+    name: fiberx-proxy
+    runtime: node
+    plan: free
+    region: oregon
+    autoDeploy: true
+    healthCheckPath: /health
+    buildCommand: >-
+      corepack enable &&
+      pnpm install --no-frozen-lockfile &&
+      pnpm --filter @fiberx/core build &&
+      pnpm --filter @fiberx/proxy build
+    startCommand: node apps/proxy/dist/index.js
+    envVars:
+      - key: NODE_VERSION
+        value: "20.18.1"
+      # "mock" works with no Fiber node. Set to "real" + FIBER_RPC_URL to proxy a node.
+      - key: FIBER_PROXY_MODE
+        value: mock
+      # Auto-generated shared secret. Copy it into the demo's VITE_PROXY_API_KEY.
+      - key: FIBER_PROXY_API_KEY
+        generateValue: true
+      # Lock this to your Vercel demo origin in production (e.g. https://fiberx.vercel.app).
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: LOG_LEVEL
+        value: info
+      # Only used when FIBER_PROXY_MODE=real:
+      # - key: FIBER_RPC_URL
+      #   value: http://your-fiber-node:8227

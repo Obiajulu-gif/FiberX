@@ -17,7 +17,8 @@
     "@fiberx/core": "workspace:*",
     "@fiberx/react": "workspace:*",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.1.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.1",

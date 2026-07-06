@@ -25,7 +25,9 @@ FiberX is a pnpm TypeScript monorepo with four parts:
 | [`@fiberx/core`](packages/core) | Framework-agnostic SDK: `FiberProvider` interface, mock provider, JSON-RPC adapter, proxy client, payment-request codec, readiness engine, typed events. Works in browser **and** Node. |
 | [`@fiberx/react`](packages/react) | React bindings: `FiberConnectProvider`, hooks, and drop-in UI components (connect button/modal, payment button/modal, readiness badge, invoice card, channel list). |
 | [`@fiberx/proxy`](apps/proxy) | A secure Fastify server that sits between the browser and a real Fiber node. Mock mode works with **no node at all**. |
-| [`@fiberx/demo`](apps/demo) | A polished Vite + React + **Tailwind CSS** playground that exercises the whole SDK. Deployable to Vercel as a zero-backend showcase. |
+| [`@fiberx/demo`](apps/demo) | A polished Vite + React + **Tailwind CSS** app with a liquid-glass **landing page** and interactive **dashboard**. Deployable to Vercel as a zero-backend showcase. |
+
+**Deploy:** demo → [Vercel](docs/deploy-vercel.md) (static, mock mode) · proxy backend → [Render](docs/deploy-render.md) (`render.yaml` blueprint).
 
 ## 2. Selected hackathon category
 

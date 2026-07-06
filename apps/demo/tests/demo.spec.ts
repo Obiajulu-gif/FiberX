@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 async function connectMock(page: import("@playwright/test").Page) {
-  await page.goto("/");
+  await page.goto("/dashboard");
   await page.getByRole("button", { name: /connect fiber wallet/i }).click();
   const dialog = page.getByRole("dialog", { name: /connect fiber wallet/i });
   await expect(dialog).toBeVisible();
@@ -11,6 +11,18 @@ async function connectMock(page: import("@playwright/test").Page) {
     page.getByRole("button", { name: /connected/i }),
   ).toBeVisible();
 }
+
+test("landing page renders and links to the dashboard", async ({ page }) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("heading", { level: 1, name: /wallet connect/i }),
+  ).toBeVisible();
+  await page.getByRole("link", { name: /launch live dashboard/i }).click();
+  await expect(page).toHaveURL(/\/dashboard/);
+  await expect(
+    page.getByRole("heading", { name: /fiberx dashboard/i }),
+  ).toBeVisible();
+});
 
 test("connects to the mock wallet", async ({ page }) => {
   await connectMock(page);
@@ -36,8 +48,9 @@ test("happy path: create invoice, check readiness, pay", async ({ page }) => {
 
   // Pay.
   await page.getByTestId("pay-invoice").click();
-  await expect(page.getByRole("dialog", { name: /fiber payment/i })).toBeVisible();
-  await expect(page.getByText(/payment succeeded/i)).toBeVisible({
+  const payDialog = page.getByRole("dialog", { name: /fiber payment/i });
+  await expect(payDialog).toBeVisible();
+  await expect(payDialog.getByText(/payment succeeded/i)).toBeVisible({
     timeout: 15_000,
   });
 });
