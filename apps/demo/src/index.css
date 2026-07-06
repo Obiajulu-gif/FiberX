@@ -79,6 +79,11 @@ body {
     @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1
       text-[11px] font-semibold;
   }
+
+  .step-pill {
+    @apply inline-flex items-center rounded-full px-2.5 py-1 text-[10px]
+      font-black uppercase tracking-[0.14em];
+  }
 }
 
 /* Native select dropdowns can otherwise render as bright white on some browsers. */
@@ -89,6 +94,25 @@ select.fx-input {
 select.fx-input option {
   background: #110d23;
   color: #f4f1ff;
+}
+
+.event-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(157, 123, 255, 0.5) rgba(255, 255, 255, 0.06);
+}
+.event-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.event-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+}
+.event-scroll::-webkit-scrollbar-thumb {
+  background: rgba(157, 123, 255, 0.48);
+  border-radius: 999px;
+}
+.event-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(157, 123, 255, 0.72);
 }
 
 /* Bridge: make the shipped @fiberx/react components feel native on the
