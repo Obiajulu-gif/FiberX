@@ -251,7 +251,7 @@ function EventItem({ entry }: { entry: LogEntry }) {
       >
         {meta.icon}
       </span>
-      <article className="min-w-0 flex-1 rounded-2xl border border-white/10 bg-black/22 px-3.5 py-3 shadow-[0_14px_40px_-28px_rgba(0,0,0,0.9)] transition hover:border-white/20 hover:bg-white/[0.045]">
+      <article className="min-w-0 flex-1 rounded-2xl border border-white/10 bg-black/[0.22] px-3.5 py-3 shadow-[0_14px_40px_-28px_rgba(0,0,0,0.9)] transition hover:border-white/20 hover:bg-white/[0.045]">
         <div className="flex items-center justify-between gap-3">
           <span className={`chip ${meta.chip}`}>{meta.label}</span>
           <time className="shrink-0 font-mono text-[11px] tabular-nums text-white/35">
@@ -259,7 +259,7 @@ function EventItem({ entry }: { entry: LogEntry }) {
           </time>
         </div>
         <p
-          className="mt-2 truncate font-mono text-[12px] leading-5 text-white/68"
+          className="mt-2 truncate font-mono text-[12px] leading-5 text-white/[0.68]"
           title={entry.message}
         >
           {entry.message}
@@ -273,7 +273,7 @@ function Metric({ label, value }: { label: string; value: number }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.035] px-3 py-2.5">
       <div className="text-lg font-black leading-none text-white">{value}</div>
-      <div className="mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white/38">
+      <div className="mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white/[0.38]">
         {label}
       </div>
     </div>
@@ -282,8 +282,8 @@ function Metric({ label, value }: { label: string; value: number }) {
 
 function EmptyState() {
   return (
-    <div className="rounded-2xl border border-dashed border-white/14 bg-black/18 px-4 py-5 text-center">
-      <div className="mx-auto grid h-10 w-10 place-items-center rounded-full bg-white/8 text-lg">
+    <div className="rounded-2xl border border-dashed border-white/[0.14] bg-black/[0.18] px-4 py-5 text-center">
+      <div className="mx-auto grid h-10 w-10 place-items-center rounded-full bg-white/[0.08] text-lg">
         📡
       </div>
       <h3 className="mt-3 text-sm font-black text-white">Waiting for SDK events</h3>
