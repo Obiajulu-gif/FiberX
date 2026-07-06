@@ -22,34 +22,34 @@ export function ConnectPanel() {
   }, [connected, provider]);
 
   return (
-    <section className="card">
-      <div className="card-head">
-        <h2>Connection</h2>
+    <section className="panel">
+      <div className="flex items-center justify-between">
+        <h2 className="panel-title">Connection</h2>
         {connected ? (
-          <span className="fx-badge fx-badge-green">Connected</span>
+          <span className="chip bg-fx-emerald/15 text-fx-emerald">Connected</span>
         ) : (
-          <span className="fx-badge fx-badge-yellow">Disconnected</span>
+          <span className="chip bg-fx-amber/15 text-fx-amber">Disconnected</span>
         )}
       </div>
 
       {!connected || !info ? (
-        <p className="fx-muted" data-testid="connect-hint">
-          Click <strong>Connect Fiber Wallet</strong> above and choose the Mock
-          Fiber Wallet to explore the SDK without a node.
+        <p className="text-sm text-white/50" data-testid="connect-hint">
+          Click <strong className="text-white/80">Connect Fiber Wallet</strong>{" "}
+          above and choose the Mock Fiber Wallet to explore the SDK without a
+          node.
         </p>
       ) : (
-        <div className="info-grid" data-testid="node-info">
+        <div
+          className="grid grid-cols-2 gap-x-4 gap-y-3.5"
+          data-testid="node-info"
+        >
           <Field label="Provider" value={grant?.providerType ?? "—"} />
           <Field label="Node name" value={info.nodeName ?? "—"} />
           <Field label="Network" value={info.network} />
           <Field label="Pubkey" value={shorten(info.pubkey)} mono />
           <Field label="Channels" value={String(info.channelCount)} />
           <Field label="Peers" value={String(info.peersCount)} />
-          <Field
-            label="Features"
-            value={info.features.join(", ")}
-            full
-          />
+          <Field label="Features" value={info.features.join(", ")} full />
         </div>
       )}
     </section>
@@ -68,9 +68,13 @@ function Field({
   full?: boolean;
 }) {
   return (
-    <div className={`field ${full ? "field-full" : ""}`}>
-      <span className="field-label">{label}</span>
-      <span className={`field-value ${mono ? "mono" : ""}`}>{value}</span>
+    <div className={`flex flex-col gap-1 ${full ? "col-span-2" : ""}`}>
+      <span className="eyebrow">{label}</span>
+      <span
+        className={`text-sm text-white/90 ${mono ? "font-mono text-[13px] break-all" : ""}`}
+      >
+        {value}
+      </span>
     </div>
   );
 }

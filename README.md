@@ -25,7 +25,7 @@ FiberX is a pnpm TypeScript monorepo with four parts:
 | [`@fiberx/core`](packages/core) | Framework-agnostic SDK: `FiberProvider` interface, mock provider, JSON-RPC adapter, proxy client, payment-request codec, readiness engine, typed events. Works in browser **and** Node. |
 | [`@fiberx/react`](packages/react) | React bindings: `FiberConnectProvider`, hooks, and drop-in UI components (connect button/modal, payment button/modal, readiness badge, invoice card, channel list). |
 | [`@fiberx/proxy`](apps/proxy) | A secure Fastify server that sits between the browser and a real Fiber node. Mock mode works with **no node at all**. |
-| [`@fiberx/demo`](apps/demo) | A polished playground app that exercises the whole SDK. |
+| [`@fiberx/demo`](apps/demo) | A polished Vite + React + **Tailwind CSS** playground that exercises the whole SDK. Deployable to Vercel as a zero-backend showcase. |
 
 ## 2. Selected hackathon category
 
@@ -123,6 +123,13 @@ a 1 CKB invoice, click **Can I pay?**, then **Pay invoice**.
 
 > First run of `pnpm dev` builds `@fiberx/core` and `@fiberx/react` automatically.
 > To run pieces separately: `pnpm dev:proxy` and `pnpm dev:demo`.
+
+### Deploy the demo (Vercel)
+
+The demo is a static SPA that runs fully in mock mode — no backend needed. Import
+`Obiajulu-gif/FiberX` at <https://vercel.com/new> (keep Root Directory = repo
+root); the included [`vercel.json`](vercel.json) configures the monorepo build.
+Full steps: [docs/deploy-vercel.md](docs/deploy-vercel.md).
 
 ## 9. Test / build commands
 

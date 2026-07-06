@@ -11,15 +11,15 @@ export function App() {
   return (
     <DemoStateProvider>
       <EventLogProvider>
-        <div className="demo-root">
+        <div className="mx-auto max-w-6xl px-4 pb-20 pt-6 sm:px-6">
           <DemoHeader />
-          <main className="demo-main">
-            <div className="grid">
-              <div className="col">
+          <main className="flex flex-col gap-5">
+            <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+              <div className="flex flex-col gap-5">
                 <ConnectPanel />
                 <ChannelPanel />
               </div>
-              <div className="col">
+              <div className="flex flex-col gap-5">
                 <InvoicePlayground />
                 <ReadinessPlayground />
                 <PaymentPlayground />
@@ -27,11 +27,17 @@ export function App() {
             </div>
             <EventLog />
           </main>
-          <footer className="demo-footer">
-            <span>
-              FiberX · Fiber Wallet Connect SDK · Wallet &amp; Payment UX
-              Infrastructure
-            </span>
+          <footer className="mt-10 text-center text-xs text-white/35">
+            FiberX · Fiber Wallet Connect SDK · Wallet &amp; Payment UX
+            Infrastructure ·{" "}
+            <a
+              className="text-fx-violet-400 hover:text-white"
+              href="https://github.com/Obiajulu-gif/FiberX"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
           </footer>
         </div>
       </EventLogProvider>

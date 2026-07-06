@@ -44,7 +44,6 @@ export function EventLogProvider({ children }: { children: ReactNode }) {
 
   const clear = useCallback(() => setEntries([]), []);
 
-  // Subscribe to SDK events from the active provider.
   useEffect(() => {
     if (!provider) return;
     const offs = [
@@ -94,40 +93,63 @@ export function useEventLog(): EventLogContextValue {
   return ctx;
 }
 
-const KIND_COLORS: Record<string, string> = {
-  connect: "green",
-  disconnect: "grey",
-  "invoice:created": "purple",
-  "readiness:checked": "yellow",
-  "payment:created": "blue",
-  "payment:pending": "blue",
-  "payment:succeeded": "green",
-  "payment:failed": "red",
+const KIND_CHIP: Record<string, string> = {
+  connect: "bg-fx-emerald/15 text-fx-emerald",
+  disconnect: "bg-white/10 text-white/60",
+  "invoice:created": "bg-fx-violet/20 text-fx-violet-400",
+  "readiness:checked": "bg-fx-amber/15 text-fx-amber",
+  "payment:created": "bg-fx-cyan/15 text-fx-cyan",
+  "payment:pending": "bg-fx-cyan/15 text-fx-cyan",
+  "payment:succeeded": "bg-fx-emerald/15 text-fx-emerald",
+  "payment:failed": "bg-fx-rose/15 text-fx-rose",
 };
 
 export function EventLog() {
   const { entries, clear } = useEventLog();
   return (
-    <section className="card">
-      <div className="card-head">
-        <h2>Event log</h2>
-        <button className="fx-btn fx-btn-small" onClick={clear}>
+    <section className="panel">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="grid h-6 w-6 place-items-center rounded-md bg-white/10 text-xs">
+            📡
+          </span>
+          <h2 className="panel-title">Event log</h2>
+          {entries.length > 0 && (
+            <span className="chip bg-white/10 text-white/50">
+              {entries.length}
+            </span>
+          )}
+        </div>
+        <button className="btn-ghost px-3 py-1.5 text-xs" onClick={clear}>
           Clear
         </button>
       </div>
+
       {entries.length === 0 ? (
-        <p className="fx-muted">
+        <p className="text-sm text-white/45">
           No events yet. Connect a wallet to see SDK events stream in.
         </p>
       ) : (
-        <ul className="event-log" data-testid="event-log">
+        <ul
+          className="flex max-h-80 flex-col gap-1.5 overflow-y-auto pr-1"
+          data-testid="event-log"
+        >
           {entries.map((e) => (
-            <li key={e.id} className="event-row">
-              <span className="event-time">{e.at}</span>
-              <span className={`event-kind event-${KIND_COLORS[e.kind] ?? "grey"}`}>
+            <li
+              key={e.id}
+              className="grid grid-cols-[64px_150px_1fr] items-center gap-3 rounded-lg bg-white/[0.03] px-3 py-2"
+            >
+              <span className="font-mono text-[11px] tabular-nums text-white/40">
+                {e.at}
+              </span>
+              <span
+                className={`chip justify-center ${KIND_CHIP[e.kind] ?? "bg-white/10 text-white/60"}`}
+              >
                 {e.kind}
               </span>
-              <span className="event-msg">{e.message}</span>
+              <span className="truncate font-mono text-[12px] text-white/70">
+                {e.message}
+              </span>
             </li>
           ))}
         </ul>

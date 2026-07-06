@@ -29,26 +29,29 @@ export function InvoicePlayground() {
   }
 
   return (
-    <section className="card">
-      <div className="card-head">
-        <h2>Invoice playground</h2>
+    <section className="panel">
+      <div className="flex items-center gap-2">
+        <span className="grid h-6 w-6 place-items-center rounded-md bg-fx-violet/20 text-xs">
+          🧾
+        </span>
+        <h2 className="panel-title">Invoice playground</h2>
       </div>
 
-      <div className="form-row">
-        <label className="field">
-          <span className="field-label">Amount</span>
+      <div className="grid grid-cols-[1fr_130px] gap-3">
+        <label className="flex flex-col gap-1.5">
+          <span className="eyebrow">Amount</span>
           <input
-            className="input"
+            className="fx-input"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             data-testid="invoice-amount"
             inputMode="decimal"
           />
         </label>
-        <label className="field">
-          <span className="field-label">Currency</span>
+        <label className="flex flex-col gap-1.5">
+          <span className="eyebrow">Currency</span>
           <select
-            className="input"
+            className="fx-input"
             value={currency}
             onChange={(e) => setCurrency(e.target.value as CurrencyCode)}
             data-testid="invoice-currency"
@@ -59,10 +62,10 @@ export function InvoicePlayground() {
         </label>
       </div>
 
-      <label className="field">
-        <span className="field-label">Description</span>
+      <label className="flex flex-col gap-1.5">
+        <span className="eyebrow">Description</span>
         <input
-          className="input"
+          className="fx-input"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           data-testid="invoice-description"
@@ -70,7 +73,7 @@ export function InvoicePlayground() {
       </label>
 
       <button
-        className="fx-btn fx-btn-primary"
+        className="btn-primary w-full"
         onClick={handleCreate}
         disabled={!connected || creating}
         data-testid="create-invoice"
@@ -79,11 +82,13 @@ export function InvoicePlayground() {
       </button>
 
       {(localError || error) && (
-        <div className="fx-error">{localError ?? error?.message}</div>
+        <div className="rounded-xl bg-fx-rose/15 px-3.5 py-2.5 text-sm text-fx-rose">
+          {localError ?? error?.message}
+        </div>
       )}
 
       {invoice && (
-        <div data-testid="invoice-output" style={{ marginTop: 12 }}>
+        <div data-testid="invoice-output">
           <FiberInvoiceCard
             invoiceAddress={invoice.invoiceAddress}
             amount={parseUnits(amount, CURRENCIES[currency].decimals)}

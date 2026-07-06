@@ -28,15 +28,18 @@ export function PaymentPlayground() {
   }
 
   return (
-    <section className="card">
-      <div className="card-head">
-        <h2>Payment playground</h2>
+    <section className="panel">
+      <div className="flex items-center gap-2">
+        <span className="grid h-6 w-6 place-items-center rounded-md bg-fx-emerald/20 text-xs">
+          ⚡
+        </span>
+        <h2 className="panel-title">Payment playground</h2>
       </div>
 
-      <label className="field">
-        <span className="field-label">Invoice</span>
+      <label className="flex flex-col gap-1.5">
+        <span className="eyebrow">Invoice</span>
         <input
-          className="input"
+          className="fx-input font-mono text-[13px]"
           value={invoice}
           onChange={(e) => setInvoice(e.target.value)}
           placeholder="fibt_mock_…"
@@ -45,7 +48,7 @@ export function PaymentPlayground() {
       </label>
 
       <button
-        className="fx-btn fx-btn-primary"
+        className="btn-primary w-full"
         onClick={handlePay}
         disabled={!connected || !invoice}
         data-testid="pay-invoice"
@@ -54,9 +57,12 @@ export function PaymentPlayground() {
       </button>
 
       {payment && phase !== "idle" && (
-        <div className="pay-status-card" data-testid="payment-status">
-          <span className="field-label">Latest status</span>
-          <span className={`fx-badge fx-badge-${statusTone(payment.status)}`}>
+        <div
+          className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-3.5 py-2.5"
+          data-testid="payment-status"
+        >
+          <span className="eyebrow">Latest status</span>
+          <span className={`chip ${statusChip(payment.status)}`}>
             {payment.status}
           </span>
         </div>
@@ -74,16 +80,16 @@ export function PaymentPlayground() {
   );
 }
 
-function statusTone(status: string): string {
+function statusChip(status: string): string {
   switch (status) {
     case "Succeeded":
-      return "green";
+      return "bg-fx-emerald/15 text-fx-emerald";
     case "Failed":
-      return "red";
+      return "bg-fx-rose/15 text-fx-rose";
     case "Pending":
     case "Created":
-      return "yellow";
+      return "bg-fx-amber/15 text-fx-amber";
     default:
-      return "neutral";
+      return "bg-white/10 text-white/60";
   }
 }

@@ -8,7 +8,6 @@ export function ReadinessPlayground() {
   const { lastInvoice } = useDemoState();
   const [invoice, setInvoice] = useState("");
 
-  // Prefill from the most recently created invoice.
   useEffect(() => {
     if (lastInvoice) setInvoice(lastInvoice);
   }, [lastInvoice]);
@@ -18,15 +17,18 @@ export function ReadinessPlayground() {
   }
 
   return (
-    <section className="card">
-      <div className="card-head">
-        <h2>Payment readiness — “Can I pay?”</h2>
+    <section className="panel">
+      <div className="flex items-center gap-2">
+        <span className="grid h-6 w-6 place-items-center rounded-md bg-fx-cyan/20 text-xs">
+          🔎
+        </span>
+        <h2 className="panel-title">Payment readiness — “Can I pay?”</h2>
       </div>
 
-      <label className="field">
-        <span className="field-label">Invoice</span>
+      <label className="flex flex-col gap-1.5">
+        <span className="eyebrow">Invoice</span>
         <input
-          className="input"
+          className="fx-input font-mono text-[13px]"
           value={invoice}
           onChange={(e) => setInvoice(e.target.value)}
           placeholder="fibt_mock_… or fiber:…"
@@ -35,7 +37,7 @@ export function ReadinessPlayground() {
       </label>
 
       <button
-        className="fx-btn fx-btn-primary"
+        className="btn-primary w-full"
         onClick={handleCheck}
         disabled={!connected || checking || !invoice}
         data-testid="check-can-pay"
@@ -45,25 +47,29 @@ export function ReadinessPlayground() {
 
       {readiness && (
         <div
-          className={`readiness-output ${readiness.ok ? "ok" : "bad"}`}
+          className={`flex flex-col gap-1.5 rounded-xl border px-4 py-3.5 text-sm ${
+            readiness.ok
+              ? "border-fx-emerald/25 bg-fx-emerald/10"
+              : "border-fx-rose/25 bg-fx-rose/10"
+          }`}
           data-testid="readiness-output"
         >
-          <div className="readiness-headline">
+          <div className="text-[15px] font-black text-white">
             {readiness.ok ? "✅" : "❌"} {readiness.code}
           </div>
-          <div className="readiness-message">{readiness.message}</div>
+          <div className="text-white/70">{readiness.message}</div>
           {readiness.estimatedFee && (
-            <div className="readiness-line">
+            <div className="text-[13px] text-white/50">
               Estimated fee: {readiness.estimatedFee} shannons
             </div>
           )}
           {readiness.routeConfidence && (
-            <div className="readiness-line">
+            <div className="text-[13px] text-white/50">
               Route confidence: {readiness.routeConfidence}
             </div>
           )}
           {readiness.recommendedAction && (
-            <div className="readiness-action">
+            <div className="mt-1 text-[13px] font-semibold text-white/80">
               Recommended action: {readiness.recommendedAction}
             </div>
           )}
