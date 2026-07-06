@@ -18,11 +18,17 @@ export function ReadinessPlayground() {
 
   return (
     <section className="panel">
-      <div className="flex items-center gap-2">
-        <span className="grid h-6 w-6 place-items-center rounded-md bg-fx-cyan/20 text-xs">
-          🔎
-        </span>
-        <h2 className="panel-title">Payment readiness — “Can I pay?”</h2>
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-2">
+          <span className="step-pill bg-fx-amber/15 text-fx-amber">Step 3</span>
+          <span className="grid h-6 w-6 place-items-center rounded-md bg-fx-cyan/20 text-xs">
+            🔎
+          </span>
+          <h2 className="panel-title">Check payment readiness</h2>
+        </div>
+        <p className="text-xs leading-5 text-white/45">
+          Preflight the invoice before paying so users see actionable failures first.
+        </p>
       </div>
 
       <label className="flex flex-col gap-1.5">
