@@ -1,0 +1,10 @@
+services:
+  fiberx-proxy:
+    build:
+      context: .
+      dockerfile: apps/proxy/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3099:3099"
+    env_file:
+      - apps/proxy/.env.real
