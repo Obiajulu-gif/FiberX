@@ -11,7 +11,7 @@ to build this pnpm monorepo:
 ```json
 {
   "installCommand": "pnpm install --no-frozen-lockfile",
-  "buildCommand": "pnpm build:libs && pnpm --filter @fiberx/demo build",
+  "buildCommand": "pnpm --filter @fiberx/core build && pnpm --filter @fiberx/react build && pnpm --filter @fiberx/demo build",
   "outputDirectory": "apps/demo/dist",
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
@@ -54,7 +54,7 @@ The CLI also picks up `vercel.json`, so no extra flags are needed.
 
 - Vercel auto-detects pnpm from `pnpm-lock.yaml` and honours the
   `packageManager` field in the root `package.json`.
-- `build:libs` compiles `@fiberx/core` and `@fiberx/react` (tsup) before the
+- The build compiles `@fiberx/core` and `@fiberx/react` (tsup) before the
   demo's `vite build`, which consumes their `dist` output.
 - The SPA `rewrites` rule serves `index.html` for all routes so client-side
   navigation/deep links don't 404.
