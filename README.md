@@ -131,6 +131,20 @@ The demo is a static SPA that runs fully in mock mode — no backend needed. Imp
 root); the included [`vercel.json`](vercel.json) configures the monorepo build.
 Full steps: [docs/deploy-vercel.md](docs/deploy-vercel.md).
 
+### Deploy with a real Fiber node
+
+Fiber is a payment-channel network, not a web-hosting platform. To make FiberX
+functional with real Fiber state/payments, run a Fiber Network Node, deploy the
+FiberX proxy next to it with `FIBER_PROXY_MODE=real`, and point the hosted demo
+at the proxy with `VITE_PROXY_URL` and `VITE_PROXY_API_KEY`.
+
+Files added for this path:
+
+- [`apps/proxy/.env.real.example`](apps/proxy/.env.real.example)
+- [`apps/proxy/Dockerfile`](apps/proxy/Dockerfile)
+- [`docker-compose.fiber-real.yml`](docker-compose.fiber-real.yml)
+- [`docs/deploy-real-fiber.md`](docs/deploy-real-fiber.md)
+
 ## 9. Test / build commands
 
 ```bash
