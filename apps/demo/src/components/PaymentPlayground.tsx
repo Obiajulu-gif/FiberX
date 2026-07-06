@@ -29,11 +29,17 @@ export function PaymentPlayground() {
 
   return (
     <section className="panel">
-      <div className="flex items-center gap-2">
-        <span className="grid h-6 w-6 place-items-center rounded-md bg-fx-emerald/20 text-xs">
-          ⚡
-        </span>
-        <h2 className="panel-title">Payment playground</h2>
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-2">
+          <span className="step-pill bg-fx-emerald/15 text-fx-emerald">Step 4</span>
+          <span className="grid h-6 w-6 place-items-center rounded-md bg-fx-emerald/20 text-xs">
+            ⚡
+          </span>
+          <h2 className="panel-title">Pay and verify status</h2>
+        </div>
+        <p className="text-xs leading-5 text-white/45">
+          Send the invoice, watch the payment modal, then confirm the SDK event timeline.
+        </p>
       </div>
 
       <label className="flex flex-col gap-1.5">
@@ -58,11 +64,16 @@ export function PaymentPlayground() {
 
       {payment && phase !== "idle" && (
         <div
-          className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-3.5 py-2.5"
+          className="flex flex-col gap-2 rounded-xl border border-white/10 bg-white/5 px-3.5 py-3 sm:flex-row sm:items-center sm:justify-between"
           data-testid="payment-status"
         >
-          <span className="eyebrow">Latest status</span>
-          <span className={`chip ${statusChip(payment.status)}`}>
+          <div>
+            <span className="eyebrow">Latest status</span>
+            <div className="mt-1 truncate font-mono text-[12px] text-white/48">
+              {payment.paymentHash}
+            </div>
+          </div>
+          <span className={`chip w-fit ${statusChip(payment.status)}`}>
             {payment.status}
           </span>
         </div>
