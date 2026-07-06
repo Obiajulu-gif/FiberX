@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "installCommand": "pnpm install --no-frozen-lockfile",
-  "buildCommand": "pnpm build:libs && pnpm --filter @fiberx/demo build",
+  "buildCommand": "pnpm --filter @fiberx/core build && pnpm --filter @fiberx/react build && pnpm --filter @fiberx/demo build",
   "outputDirectory": "apps/demo/dist",
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
