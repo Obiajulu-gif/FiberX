@@ -15,8 +15,10 @@ services:
     region: oregon
     autoDeploy: true
     healthCheckPath: /health
+    # Install pnpm directly via npm instead of corepack: the corepack bundled
+    # with Node 20.x fails signature verification ("Cannot find matching keyid").
     buildCommand: >-
-      corepack enable &&
+      npm install -g pnpm@10.28.2 &&
       pnpm install --no-frozen-lockfile &&
       pnpm --filter @fiberx/core build &&
       pnpm --filter @fiberx/proxy build

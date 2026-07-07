@@ -30,7 +30,7 @@ New → **Web Service** → connect the repo, then set:
 | Field | Value |
 |---|---|
 | Runtime | Node |
-| Build Command | `corepack enable && pnpm install --no-frozen-lockfile && pnpm --filter @fiberx/core build && pnpm --filter @fiberx/proxy build` |
+| Build Command | `npm install -g pnpm@10.28.2 && pnpm install --no-frozen-lockfile && pnpm --filter @fiberx/core build && pnpm --filter @fiberx/proxy build` |
 | Start Command | `node apps/proxy/dist/index.js` |
 | Health Check Path | `/health` |
 
@@ -72,6 +72,15 @@ On the Render service set:
 If the node is unreachable the proxy returns a clear `502` explaining to check
 `FIBER_RPC_URL` and node status. See [deploy-real-fiber.md](deploy-real-fiber.md)
 for running an actual FNN.
+
+## Troubleshooting
+
+**`Error: Cannot find matching keyid` during build.** This is a corepack bug:
+the corepack bundled with Node 20.x ships stale package-manager signing keys and
+fails to verify pnpm. The blueprint avoids corepack entirely by installing pnpm
+with `npm install -g pnpm@10.28.2`. If you hand-wrote a build command that starts
+with `corepack enable`, replace it with the `npm install -g pnpm@...` command
+shown above.
 
 ## Notes on the free plan
 
