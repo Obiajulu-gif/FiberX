@@ -2,6 +2,10 @@
 
 > Drop-in wallet connection, invoices, readiness checks, and payment status UI for [Fiber Network](https://www.ckbfiber.net/) apps.
 
+**🔗 Live demo: [fiber-x-demo.vercel.app](https://fiber-x-demo.vercel.app/)** · Proxy health: [fiberx-proxy.onrender.com/health](https://fiberx-proxy.onrender.com/health) · License: MIT
+
+_The live demo runs fully in mock mode — no wallet or Fiber node required. Connect → create an invoice → run "Can I pay?" → pay, all in your browser._
+
 FiberX is reusable **infrastructure** for the Fiber Network on CKB. It gives any
 web app a safe, batteries-included way to **connect to a Fiber wallet/provider,
 create invoices, check whether a payment can actually be made ("Can I pay?"),

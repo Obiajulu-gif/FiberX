@@ -18,9 +18,10 @@ with **no** Fiber node via a built-in mock provider and mock proxy mode.
 
 ## Links
 
-- Repository: _<add GitHub URL here>_
+- Repository: https://github.com/Obiajulu-gif/FiberX (open source, MIT)
+- Live demo: https://fiber-x-demo.vercel.app/ (always-on, mock mode — testable in-browser, no wallet or node required)
+- Backend proxy: https://fiberx-proxy.onrender.com/health (Render; mock/real modes)
 - Demo video: _<add video URL here>_
-- Live demo (optional): _<add hosted URL here>_
 
 ## Technical breakdown
 
